@@ -18,11 +18,11 @@ export async function submitPick(gameId: string, pickedSide: PickSide) {
     .eq("game_id", gameId)
     .maybeSingle();
 
-   if (existing) {
+  if (existing) {
     const { error } = await supabase
       .from("picks")
       .update({ picked_side: pickedSide } as never)
-      .eq("id", existing.id);
+      .eq("id", (existing as { id: string }).id);
     if (error) return { error: error.message };
   } else {
     const { error } = await supabase.from("picks").insert({
