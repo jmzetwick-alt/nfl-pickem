@@ -21,7 +21,7 @@ export async function submitPick(gameId: string, pickedSide: PickSide) {
   if (existing) {
     const { error } = await supabase
       .from("picks")
-      .update({ picked_side: pickedSide } as any)
+      .update({ picked_side: pickedSide } as { picked_side: "home" | "away" })
       .eq("id", existing.id);
     if (error) return { error: error.message };
   } else {
