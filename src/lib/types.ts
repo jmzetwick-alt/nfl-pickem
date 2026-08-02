@@ -70,16 +70,25 @@ export type Database = {
         Row: Profile;
         Insert: Omit<Profile, "created_at"> & { created_at?: string };
         Update: Partial<Omit<Profile, "id">>;
+        Relationships: [];
       };
       seasons: {
         Row: Season;
-        Insert: Omit<Season, "id" | "created_at"> & { id?: string; created_at?: string };
+        Insert: Omit<Season, "id" | "created_at"> & {
+          id?: string;
+          created_at?: string;
+        };
         Update: Partial<Omit<Season, "id">>;
+        Relationships: [];
       };
       weeks: {
         Row: Week;
-        Insert: Omit<Week, "id" | "created_at"> & { id?: string; created_at?: string };
+        Insert: Omit<Week, "id" | "created_at"> & {
+          id?: string;
+          created_at?: string;
+        };
         Update: Partial<Omit<Week, "id">>;
+        Relationships: [];
       };
       games: {
         Row: Game;
@@ -89,6 +98,7 @@ export type Database = {
           updated_at?: string;
         };
         Update: Partial<Omit<Game, "id">>;
+        Relationships: [];
       };
       picks: {
         Row: Pick;
@@ -98,7 +108,20 @@ export type Database = {
           updated_at?: string;
         };
         Update: Partial<Omit<Pick, "id">>;
+        Relationships: [];
       };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
     };
   };
 };
