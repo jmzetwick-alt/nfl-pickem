@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nfl-green: #013369;
+  --color-nfl-red: #d50a0a;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.form-input {
+  @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-[var(--color-nfl-green)] focus:outline-none focus:ring-1 focus:ring-[var(--color-nfl-green)];
+}
