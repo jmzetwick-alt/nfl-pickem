@@ -18,10 +18,10 @@ export async function submitPick(gameId: string, pickedSide: PickSide) {
     .eq("game_id", gameId)
     .maybeSingle();
 
-  if (existing) {
+   if (existing) {
     const { error } = await supabase
       .from("picks")
-      .update({ picked_side: pickedSide } as { picked_side: "home" | "away" })
+      .update({ picked_side: pickedSide } as never)
       .eq("id", existing.id);
     if (error) return { error: error.message };
   } else {
@@ -29,7 +29,7 @@ export async function submitPick(gameId: string, pickedSide: PickSide) {
       user_id: user.id,
       game_id: gameId,
       picked_side: pickedSide,
-    });
+    } as never);
     if (error) return { error: error.message };
   }
 
